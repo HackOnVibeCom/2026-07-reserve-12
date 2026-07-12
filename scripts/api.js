@@ -1,5 +1,5 @@
 const API_KEY = "AQ." + "Ab8RN6La5-X7xZeGoDuQRLcMcqABFQNQCIhiyUotIndpDys6sA";
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
 async function callGemini(systemPrompt, userPrompt, maxTokens = 1500) {
   const maskedKey = API_KEY.substring(0, 8) + "*".repeat(API_KEY.length - 12) + API_KEY.substring(API_KEY.length - 4);

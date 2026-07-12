@@ -1,20 +1,325 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>HackOnVibe — team project</title>
-<style>
-body{margin:0;min-height:100vh;display:grid;place-items:center;background:#10051f;color:#fff8ff;font-family:Inter,system-ui,sans-serif;padding:2rem;line-height:1.7}
-main{max-width:48rem}
-.q{font-size:1.3rem;font-weight:700;margin:0 0 1rem}
-.a{color:#c8b9d8;font-size:1.05rem;margin:0}
-u{text-underline-offset:3px}
-a{color:#19f7ff;word-break:break-word}
-code{background:rgba(255,255,255,.08);padding:2px 7px;border-radius:6px}
-.build{color:#c8b9d8;font-size:.95rem;margin:1.4rem 0 0;padding-top:1rem;border-top:1px solid rgba(255,255,255,.12)}
-</style>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Praeco — The Herald of Your Launch</title>
+  
+  <!-- SEO & Social Meta Tags -->
+  <meta name="description" content="Praeco — The herald of your launch. Go from app description to a full promotional copy kit in minutes.">
+  <meta property="og:title" content="Praeco — The Herald of Your Launch">
+  <meta property="og:description" content="Ancient Roman heralds announced to the world. Praeco does it for your app.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts Import -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/animations.css">
 </head>
-<body><main>
-<p class="q">Q: How to automate pushing to GitHub via the CLI using your AI.</p>
-<p class="a">A: A <strong><u>guide</u></strong> on <strong><u>how to automate pushing to GitHub via the CLI using your AI</u></strong> (without your involvement in PRs, merging, or <strong><u>conflict resolution</u></strong> (AI itself takes on the "headache" of it)) <a href="https://docs.github.com/en/github-cli/github-cli/quickstart">https://docs.github.com/en/github-cli/github-cli/quickstart</a> &amp; <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens">https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens</a></p>
-<p class="build">⏱️ Build time: after you push to <code>main</code>, your site goes live in about <strong>2–5 minutes</strong>. If it's still not live after 5 minutes, something went wrong — <strong>raise the alarm</strong> so the organizers can help.</p>
-</main></body>
+<body>
+  <canvas id="aurora-canvas"></canvas>
+
+  <!-- Top Navigation Bar -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo">
+        <span>📯</span> Praeco
+      </div>
+      <div class="nav-links">
+        <a href="#how-it-works" class="nav-link">How it works</a>
+        <a href="#tool" class="btn-nav">Try it free →</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="hero-glow"></div>
+    
+    <!-- Floating Particles -->
+    <div class="particle" style="left: 10%; width: 12px; height: 12px; animation: float 14s infinite linear; animation-delay: 0s;"></div>
+    <div class="particle" style="left: 25%; width: 8px; height: 8px; animation: float 16s infinite linear; animation-delay: 2.5s;"></div>
+    <div class="particle" style="left: 45%; width: 16px; height: 16px; animation: float 12s infinite linear; animation-delay: 1s;"></div>
+    <div class="particle" style="left: 65%; width: 10px; height: 10px; animation: float 15s infinite linear; animation-delay: 4s;"></div>
+    <div class="particle" style="left: 80%; width: 14px; height: 14px; animation: float 13s infinite linear; animation-delay: 1.5s;"></div>
+    <div class="particle" style="left: 92%; width: 7px; height: 7px; animation: float 18s infinite linear; animation-delay: 3.5s;"></div>
+
+    <div class="container">
+      <h1 class="hero-title">
+        <span>Your app is live.</span>
+        <span class="gradient-text">Let Praeco tell the world.</span>
+      </h1>
+      
+      <p class="hero-sub">
+        Praeco turns your app description into polished positioning, App Store copy, tweets, Reddit posts, and more — in under 60 seconds.
+      </p>
+
+      <div class="hero-pills">
+        <span class="hero-pill">✦ AI-Powered Positioning</span>
+        <span class="hero-pill">✦ 5-Channel Copy Kit</span>
+        <span class="hero-pill">✦ One Click Export</span>
+      </div>
+
+      <a href="#tool" id="hero-cta" class="btn btn-primary pulse-glow">
+        ✦ Generate My Launch Kit →
+      </a>
+
+      <p class="hero-social-proof">
+        Powered by Gemini AI · Built for app founders who ship
+      </p>
+    </div>
+  </section>
+
+  <!-- Explainer Section -->
+  <section id="how-it-works">
+    <div class="container">
+      <h2 class="section-title font-display">How Praeco works</h2>
+      <p class="section-subtitle">Three steps from silence to announced.</p>
+      
+      <div class="cards-row">
+        <!-- Card 1 -->
+        <div class="work-card">
+          <span class="card-watermark">01</span>
+          <span class="card-emoji">📝</span>
+          <h3 class="card-title font-display">Describe Your App</h3>
+          <p class="card-desc">Fill in a short structured form about your app — what it does, who it's for, what makes it different, and the tone you want.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="work-card">
+          <span class="card-watermark">02</span>
+          <span class="card-emoji">🎯</span>
+          <h3 class="card-title font-display">Lock Your Positioning</h3>
+          <p class="card-desc">Praeco generates 5 sharp positioning one-liners. Pick the one that fits, tweak it if needed, and lock it in as your core message.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="work-card">
+          <span class="card-watermark">03</span>
+          <span class="card-emoji">🚀</span>
+          <h3 class="card-title font-display">Get Your Full Promo Kit</h3>
+          <p class="card-desc">Using your locked message, Praeco writes your App Store description, 5 tweets, a Reddit post, a Product Hunt tagline, and a LinkedIn post — all in one shot.</p>
+        </div>
+      </div>
+
+      <div class="how-cta">
+        <a href="#tool" id="btn-start-now" class="btn btn-outline">
+          Start Now →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Tool Interface -->
+  <section id="tool">
+    <div class="container">
+      
+      <!-- Stepper Component -->
+      <div class="stepper">
+        <div class="step-item active" id="step-item-1">
+          <div class="step-circle"><span class="step-num">1</span></div>
+          <span class="step-label">Describe</span>
+        </div>
+        <div class="step-connector" id="connector-1"></div>
+        <div class="step-item upcoming" id="step-item-2">
+          <div class="step-circle"><span class="step-num">2</span></div>
+          <span class="step-label">Positioning</span>
+        </div>
+        <div class="step-connector" id="connector-2"></div>
+        <div class="step-item upcoming" id="step-item-3">
+          <div class="step-circle"><span class="step-num">3</span></div>
+          <span class="step-label">Promo Kit</span>
+        </div>
+      </div>
+
+      <!-- Step 1: Input Form View -->
+      <div id="step-1" class="tool-step">
+        <h2 class="section-title font-display">Tell us about your app</h2>
+        <p class="section-subtitle">The more specific you are, the sharper your copy will be.</p>
+        
+        <form id="step-1-form" class="form-card">
+          <div class="form-grid">
+            
+            <!-- Field 1: App Name -->
+            <div class="form-group">
+              <label for="app-name">App Name</label>
+              <input type="text" id="app-name" placeholder="e.g. Pebble" required>
+            </div>
+
+            <!-- Field 2: Category Dropdown -->
+            <div class="form-group">
+              <label for="app-category">Category</label>
+              <select id="app-category" required>
+                <option value="" disabled selected>Select a category</option>
+                <option value="Health & Fitness">Health & Fitness</option>
+                <option value="Productivity">Productivity</option>
+                <option value="Finance">Finance</option>
+                <option value="Social">Social</option>
+                <option value="Education">Education</option>
+                <option value="Gaming">Gaming</option>
+                <option value="Travel">Travel</option>
+                <option value="Food & Drink">Food & Drink</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Developer Tools">Developer Tools</option>
+                <option value="Business">Business</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <!-- Field 3: Short Description -->
+            <div class="form-group form-group-full">
+              <label for="app-desc">What does your app do?</label>
+              <textarea id="app-desc" placeholder="e.g. Pebble is a habit tracker for busy parents that uses gentle nudges instead of streaks or guilt. Available on iOS." maxlength="400" required></textarea>
+              <div class="counter-row">
+                <span id="desc-char-count" class="char-counter">0 / 400</span>
+              </div>
+            </div>
+
+            <!-- Field 4: Target Audience -->
+            <div class="form-group">
+              <label for="app-audience">Who is it for?</label>
+              <input type="text" id="app-audience" placeholder="e.g. Busy parents aged 28–45 who want to build better habits without feeling guilty" required>
+            </div>
+
+            <!-- Field 5: Problem Solved -->
+            <div class="form-group">
+              <label for="app-problem">What's their #1 problem you solve?</label>
+              <input type="text" id="app-problem" placeholder="e.g. Most habit apps make people feel bad for missing days, which kills motivation" required>
+            </div>
+
+            <!-- Field 6: Your Differentiator -->
+            <div class="form-group form-group-full">
+              <label for="app-differentiator">What makes you different from alternatives?</label>
+              <input type="text" id="app-differentiator" placeholder="e.g. No streaks, no guilt — just gentle daily nudges that actually fit into chaotic schedules" required>
+            </div>
+
+            <!-- Field 7: Tone of Voice Radios -->
+            <div class="form-group form-group-full">
+              <label>Tone of voice</label>
+              <div class="pill-group">
+                <div class="pill-option">
+                  <input type="radio" id="tone-friendly" name="tone" value="Friendly" checked>
+                  <label for="tone-friendly">😊 Friendly</label>
+                </div>
+                <div class="pill-option">
+                  <input type="radio" id="tone-professional" name="tone" value="Professional">
+                  <label for="tone-professional">💼 Professional</label>
+                </div>
+                <div class="pill-option">
+                  <input type="radio" id="tone-bold" name="tone" value="Bold">
+                  <label for="tone-bold">⚡ Bold</label>
+                </div>
+                <div class="pill-option">
+                  <input type="radio" id="tone-minimalist" name="tone" value="Minimalist">
+                  <label for="tone-minimalist">🌿 Minimalist</label>
+                </div>
+                <div class="pill-option">
+                  <input type="radio" id="tone-playful" name="tone" value="Playful">
+                  <label for="tone-playful">😄 Playful</label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Field 8: Platforms Checkboxes -->
+            <div class="form-group form-group-full">
+              <label>Available on</label>
+              <div class="pill-group platform-group">
+                <div class="pill-option">
+                  <input type="checkbox" id="platform-ios" name="platforms" value="iOS" checked>
+                  <label for="platform-ios">📱 iOS</label>
+                </div>
+                <div class="pill-option">
+                  <input type="checkbox" id="platform-android" name="platforms" value="Android">
+                  <label for="platform-android">🤖 Android</label>
+                </div>
+                <div class="pill-option">
+                  <input type="checkbox" id="platform-web" name="platforms" value="Web">
+                  <label for="platform-web">🌐 Web</label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Field 9: Price Model Radios -->
+            <div class="form-group form-group-full">
+              <label>Price model</label>
+              <div class="pill-group">
+                <div class="pill-option">
+                  <input type="radio" id="price-free" name="priceModel" value="Free" checked>
+                  <label for="price-free">Free</label>
+                </div>
+                <div class="pill-option">
+                  <input type="radio" id="price-freemium" name="priceModel" value="Freemium">
+                  <label for="price-freemium">Freemium</label>
+                </div>
+                <div class="pill-option">
+                  <input type="radio" id="price-paid" name="priceModel" value="Paid">
+                  <label for="price-paid">Paid</label>
+                </div>
+                <div class="pill-option">
+                  <input type="radio" id="price-subscription" name="priceModel" value="Subscription">
+                  <label for="price-subscription">Subscription</label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Field 10: Launch Stage Radios -->
+            <div class="form-group form-group-full">
+              <label>Launch stage</label>
+              <div class="pill-group">
+                <div class="pill-option">
+                  <input type="radio" id="stage-just-launched" name="launchStage" value="Just launched" checked>
+                  <label for="stage-just-launched">Just launched</label>
+                </div>
+                <div class="pill-option">
+                  <input type="radio" id="stage-soft-launch" name="launchStage" value="Soft launch">
+                  <label for="stage-soft-launch">Soft launch</label>
+                </div>
+                <div class="pill-option">
+                  <input type="radio" id="stage-pre-launch" name="launchStage" value="Pre-launch">
+                  <label for="stage-pre-launch">Pre-launch</label>
+                </div>
+                <div class="pill-option">
+                  <input type="radio" id="stage-post-launch" name="launchStage" value="Post-launch update">
+                  <label for="stage-post-launch">Post-launch update</label>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+
+          <button type="submit" id="btn-find-positioning" class="btn btn-primary pulse-glow btn-full">
+            ✦ Find My Positioning →
+          </button>
+        </form>
+      </div>
+
+      <!-- Step 2 Results Area -->
+      <div id="positioning-workspace" style="display: none;"></div>
+
+      <!-- Step 3 Results Area -->
+      <div id="promo-kit-workspace" style="display: none;"></div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>Praeco · Built for HackOnVibe July 2026 · Powered by Gemini AI</p>
+    </div>
+  </footer>
+
+  <canvas id="cursor-canvas"></canvas>
+
+  <!-- Scripts -->
+  <script src="scripts/aurora.js"></script>
+  <script src="scripts/api.js"></script>
+  <script src="scripts/render.js"></script>
+  <script src="scripts/clipboard.js"></script>
+  <script src="scripts/app.js"></script>
+</body>
 </html>

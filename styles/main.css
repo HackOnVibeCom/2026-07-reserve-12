@@ -1,0 +1,210 @@
+:root {
+  /* Aurora color palette */
+  --aurora-1: #00c9a7;   /* teal green */
+  --aurora-2: #7c3aed;   /* violet */
+  --aurora-3: #06b6d4;   /* cyan */
+  --aurora-4: #8b5cf6;   /* purple */
+  --aurora-5: #10b981;   /* emerald */
+  --aurora-6: #3b82f6;   /* blue */
+
+  /* Keep all existing variables, just update with aurora palette bases */
+  --bg-primary: #020510;
+  --bg-secondary: #0a0f1e;
+  --bg-tertiary: #1a1a25;
+  --bg-card: #0d1225;
+  --accent-primary: #7c3aed;
+  --accent-secondary: #9d5cff;
+  --accent-glow: rgba(124, 58, 237, 0.3);
+  --accent-success: #10b981;
+  --accent-error: #ef4444;
+  --text-primary: #f0f0f5;
+  --text-secondary: #a0a0b5;
+  --text-muted: #606075;
+  --border-default: rgba(124, 58, 237, 0.2);
+  --border-accent: #7c3aed;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 9999px;
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 24px rgba(124, 58, 237, 0.4);
+  --transition-fast: 0.15s ease;
+  --transition-med: 0.3s ease;
+  --font-ui: 'Inter', sans-serif;
+  --font-display: 'Sora', sans-serif;
+}
+
+/* Background Canvas & Cursor Overlays */
+#aurora-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  will-change: transform;
+}
+
+#cursor-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* Base Styles */
+html {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  cursor: none; /* Hide default cursor */
+}
+
+/* Disable Custom Cursor and Restore Default under reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  body {
+    cursor: auto !important;
+  }
+  #cursor-canvas {
+    display: none !important;
+  }
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  margin-top: 0;
+  font-weight: 700;
+}
+
+a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--text-primary);
+}
+
+/* Layout Utilities */
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
+
+section {
+  padding: 80px 0;
+  position: relative;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: var(--radius-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
+
+/* Custom Scrollbar for Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-default) var(--bg-primary);
+}
+
+/* Navigation Bar */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(10, 10, 15, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-default);
+  transition: background-color var(--transition-med);
+}
+
+nav .nav-container {
+  max-width: 960px; /* Slightly wider nav for layout breathing room */
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+nav .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+nav .nav-link {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* Footer styling */
+footer {
+  border-top: 1px solid var(--border-default);
+  padding: 40px 0;
+  background-color: var(--bg-secondary);
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+footer p {
+  margin: 0;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  nav .nav-links .nav-link {
+    display: none; /* Hide 'How it works' link, keep only pill button */
+  }
+}

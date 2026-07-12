@@ -1,4 +1,4 @@
-const API_KEY = "AQ." + "Ab8RN6LICEU22llX_Ug2nGxkLhuU1oKLnHkgZ6j1ugWXg2PQvg";
+const API_KEY = "AQ." + "Ab8RN6K_km3_jjc4n9sCAfThjf4JT4B1V-iGs_0S6agBGMjxEw";
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
 
 async function callGemini(systemPrompt, userPrompt, maxTokens = 1500) {

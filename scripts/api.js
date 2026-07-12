@@ -1,31 +1,26 @@
-const API_KEY = "AQ." + "Ab8RN6La5-X7xZeGoDuQRLcMcqABFQNQCIhiyUotIndpDys6sA";
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
+const API_KEY = "gsk_" + "HOBS0cxqztT7Gz0LYMFDWGdyb3FYxAwDGzTEdlFWv8EPhS9CVp67";
+const API_URL = "https://api.groq.com/openai/v1/chat/completions";
 
 async function callGemini(systemPrompt, userPrompt, maxTokens = 1500) {
   const maskedKey = API_KEY.substring(0, 8) + "*".repeat(API_KEY.length - 12) + API_KEY.substring(API_KEY.length - 4);
-  console.log("Full API URL (masked key):", API_URL.replace(API_KEY, maskedKey));
+  console.log("Full API URL:", API_URL);
   console.log("API Key (masked):", maskedKey);
 
   const response = await fetch(API_URL, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${API_KEY}`
     },
     body: JSON.stringify({
-      system_instruction: {
-        parts: [{ text: systemPrompt }]
-      },
-      contents: [
-        {
-          role: "user",
-          parts: [{ text: userPrompt }]
-        }
+      model: "llama-3.3-70b-versatile",
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: userPrompt }
       ],
-      generationConfig: {
-        maxOutputTokens: maxTokens,
-        temperature: 0.8,
-        responseMimeType: "application/json"
-      }
+      response_format: { type: "json_object" },
+      temperature: 0.8,
+      max_tokens: maxTokens
     })
   });
 
@@ -34,18 +29,18 @@ async function callGemini(systemPrompt, userPrompt, maxTokens = 1500) {
 
   if (response.status === 429) {
     const rawBody = await response.clone().text();
-    console.log("Gemini 429 Error Body:", rawBody);
+    console.log("Groq 429 Error Body:", rawBody);
   }
 
   if (!response.ok) {
     const err = await response.json();
-    throw { status: response.status, message: err.error?.message };
+    throw { status: response.status, message: err.error?.message || "Groq API Error" };
   }
 
   const data = await response.json();
-  const rawText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+  const rawText = data.choices?.[0]?.message?.content;
 
-  if (!rawText) throw new Error("Empty response from Gemini");
+  if (!rawText) throw new Error("Empty response from Groq");
 
   // Clean and parse JSON safely
   const clean = rawText.replace(/```json|```/g, "").trim();

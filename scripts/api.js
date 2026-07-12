@@ -1,7 +1,11 @@
-const API_KEY = "AQ." + "Ab8RN6K_km3_jjc4n9sCAfThjf4JT4B1V-iGs_0S6agBGMjxEw";
+const API_KEY = "AQ." + "Ab8RN6La5-X7xZeGoDuQRLcMcqABFQNQCIhiyUotIndpDys6sA";
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
 
 async function callGemini(systemPrompt, userPrompt, maxTokens = 1500) {
+  const maskedKey = API_KEY.substring(0, 8) + "*".repeat(API_KEY.length - 12) + API_KEY.substring(API_KEY.length - 4);
+  console.log("Full API URL (masked key):", API_URL.replace(API_KEY, maskedKey));
+  console.log("API Key (masked):", maskedKey);
+
   const response = await fetch(API_URL, {
     method: "POST",
     headers: {
@@ -24,6 +28,14 @@ async function callGemini(systemPrompt, userPrompt, maxTokens = 1500) {
       }
     })
   });
+
+  console.log("Response Status:", response.status);
+  console.log("Response StatusText:", response.statusText);
+
+  if (response.status === 429) {
+    const rawBody = await response.clone().text();
+    console.log("Gemini 429 Error Body:", rawBody);
+  }
 
   if (!response.ok) {
     const err = await response.json();
